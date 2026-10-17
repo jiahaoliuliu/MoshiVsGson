@@ -1,0 +1,51 @@
+Moshi 1.15.2 (Kotlin reflection) vs Gson 2.13.2 (default reflection)
+
+Complete response
+JSON: {"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport"}
+Moshi: Weather(city=Madrid, condition=Clear, temperature=25.0, station=Airport)
+Gson : Weather(city=Madrid, condition=Clear, temperature=25.0, station=Airport)
+
+Missing required city
+JSON: {"condition":"Clear"}
+Moshi: JsonDataException: Required value 'city' missing at $
+Gson : Weather(city=null, condition=Clear, temperature=0.0, station=null)
+
+Explicit null city
+JSON: {"city":null}
+Moshi: JsonDataException: Non-null value 'city' was null at $.city
+Gson : Weather(city=null, condition=null, temperature=0.0, station=null)
+
+Missing optional properties
+JSON: {"city":"Madrid"}
+Moshi: Weather(city=Madrid, condition=Unknown, temperature=20.0, station=Not reported)
+Gson : Weather(city=Madrid, condition=null, temperature=0.0, station=null)
+
+Explicit nullable station
+JSON: {"city":"Madrid","condition":"Clear","temperature":25.0,"station":null}
+Moshi: Weather(city=Madrid, condition=Clear, temperature=25.0, station=null)
+Gson : Weather(city=Madrid, condition=Clear, temperature=25.0, station=null)
+
+Explicit null condition
+JSON: {"city":"Madrid","condition":null}
+Moshi: JsonDataException: Non-null value 'condition' was null at $.condition
+Gson : Weather(city=Madrid, condition=null, temperature=0.0, station=null)
+
+Unknown field
+JSON: {"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport","extra":true}
+Moshi: Weather(city=Madrid, condition=Clear, temperature=25.0, station=Airport)
+Gson : Weather(city=Madrid, condition=Clear, temperature=25.0, station=Airport)
+
+All-default constructor control: {}
+Moshi: DefaultWeather(city=Madrid, condition=Unknown)
+Gson : DefaultWeather(city=Madrid, condition=Unknown)
+
+Constructor validation: blank city
+Moshi: InvocationTargetException: null
+Gson : ValidatedWeather(city=)
+
+Late failure when using a non-null property populated by Gson
+Gson city.length: NullPointerException: Cannot invoke "String.length()" because the return value of "com.jiahaoliuliu.moshivsgson.Weather.getCity()" is null
+
+Gson with Unsafe allocation disabled
+Gson: JsonIOException: Unable to create instance of class com.jiahaoliuliu.moshivsgson.Weather; usage of JDK Unsafe is disabled. Registering an InstanceCreator or a TypeAdapter for this type, adding a no-args constructor, or enabling usage of JDK Unsafe may fix this problem.
+
