@@ -34,8 +34,8 @@ These results describe the exact models and configurations in this repository. T
 ## Project layout
 
 - `Models.kt`: three model shapes, including the all-default constructor control.
-- `Comparison.kt`: shared production configurations and JSON scenarios.
-- `Main.kt`: side-by-side output and a safe demonstration of a late failure.
+- `Comparison.kt`: shared Moshi and Gson configurations and decoding functions.
+- `Main.kt`: explicit JSON examples, side-by-side output, and a safe demonstration of a late failure.
 - `ComparisonTest.kt`: 13 tests verifying the observable behaviour.
 - [Example output](docs/example-output.txt): captured from `./gradlew run` on JDK 21.
 - [Blog article draft](docs/blog-article.md): explanation grounded in these examples.

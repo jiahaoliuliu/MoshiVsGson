@@ -13,12 +13,47 @@ private fun show(label: String, decode: () -> Any) {
 fun main() {
     println("Moshi 1.15.2 (Kotlin reflection) vs Gson 2.13.2 (default reflection)")
 
-    // Set all the scenarios
-    Comparison.scenarios.forEach { (name, json) ->
-        println("\n$name\nJSON: $json")
-        show("Moshi") { Comparison.moshi(json, Weather::class.java) }
-        show("Gson ") { Comparison.gson(json, Weather::class.java) }
-    }
+    // Complete response
+    val completeResponse = """{"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport"}"""
+    println("\nComplete response\nJSON: $completeResponse")
+    show("Moshi") { Comparison.moshi(completeResponse, Weather::class.java) }
+    show("Gson ") { Comparison.gson(completeResponse, Weather::class.java) }
+
+    // Missing required city
+    val missingRequiredCity = """{"condition":"Clear"}"""
+    println("\nMissing required city\nJSON: $missingRequiredCity")
+    show("Moshi") { Comparison.moshi(missingRequiredCity, Weather::class.java) }
+    show("Gson ") { Comparison.gson(missingRequiredCity, Weather::class.java) }
+
+    // Explicit null city
+    val nullCity = """{"city":null}"""
+    println("\nExplicit null city\nJSON: $nullCity")
+    show("Moshi") { Comparison.moshi(nullCity, Weather::class.java) }
+    show("Gson ") { Comparison.gson(nullCity, Weather::class.java) }
+
+    // Missing optional properties
+    val missingOptionalProperties = """{"city":"Madrid"}"""
+    println("\nMissing optional properties\nJSON: $missingOptionalProperties")
+    show("Moshi") { Comparison.moshi(missingOptionalProperties, Weather::class.java) }
+    show("Gson ") { Comparison.gson(missingOptionalProperties, Weather::class.java) }
+
+    // Explicit nullable station
+    val nullableStation = """{"city":"Madrid","condition":"Clear","temperature":25.0,"station":null}"""
+    println("\nExplicit nullable station\nJSON: $nullableStation")
+    show("Moshi") { Comparison.moshi(nullableStation, Weather::class.java) }
+    show("Gson ") { Comparison.gson(nullableStation, Weather::class.java) }
+
+    // Explicit null condition
+    val nullCondition = """{"city":"Madrid","condition":null}"""
+    println("\nExplicit null condition\nJSON: $nullCondition")
+    show("Moshi") { Comparison.moshi(nullCondition, Weather::class.java) }
+    show("Gson ") { Comparison.gson(nullCondition, Weather::class.java) }
+
+    // Unknown field
+    val unknownField = """{"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport","extra":true}"""
+    println("\nUnknown field\nJSON: $unknownField")
+    show("Moshi") { Comparison.moshi(unknownField, Weather::class.java) }
+    show("Gson ") { Comparison.gson(unknownField, Weather::class.java) }
 
     // When all the fields are default
     println("\nAll-default constructor control: {}")

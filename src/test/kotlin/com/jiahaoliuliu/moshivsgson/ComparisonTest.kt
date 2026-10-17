@@ -10,7 +10,7 @@ class ComparisonTest {
     private fun gson(json: String) = Comparison.gson(json, Weather::class.java)
 
     @Test fun `both decode complete responses`() {
-        val json = Comparison.scenarios.getValue("Complete response")
+        val json = """{"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport"}"""
         assertEquals(Weather("Madrid", "Clear", 25.0, "Airport"), moshi(json))
         assertEquals(moshi(json), gson(json))
     }
@@ -43,7 +43,7 @@ class ComparisonTest {
         assertNull(weather.station)
     }
     @Test fun `explicit nullable null does not select a default`() {
-        val json = Comparison.scenarios.getValue("Explicit nullable station")
+        val json = """{"city":"Madrid","condition":"Clear","temperature":25.0,"station":null}"""
         assertNull(moshi(json).station)
         assertNull(gson(json).station)
     }
@@ -51,8 +51,8 @@ class ComparisonTest {
         assertFailsWith<JsonDataException> { moshi("""{"city":"Madrid","condition":null}""") }
     }
     @Test fun `both ignore unknown fields by default`() {
-        val json = Comparison.scenarios.getValue("Unknown field")
-        assertEquals(moshi(Comparison.scenarios.getValue("Complete response")), moshi(json))
+        val json = """{"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport","extra":true}"""
+        assertEquals(moshi("""{"city":"Madrid","condition":"Clear","temperature":25.0,"station":"Airport"}"""), moshi(json))
         assertEquals(moshi(json), gson(json))
     }
     @Test fun `Gson can retain defaults through generated no-argument constructor`() {
