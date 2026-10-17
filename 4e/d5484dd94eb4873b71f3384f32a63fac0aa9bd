@@ -1,0 +1,23 @@
+README.md
+  s_141452519b4186::t_da1caca79ff99c 37-38
+src/main/kotlin/com/jiahaoliuliu/moshivsgson/Main.kt
+  s_141452519b4186::t_aa72feeb5207e9 16-56
+src/test/kotlin/com/jiahaoliuliu/moshivsgson/ComparisonTest.kt
+  s_141452519b4186::t_26a73370f9112c 13,46,54-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4ed5484dd94eb4873b71f3384f32a63fac0aa9bd",
+  "prompts": {},
+  "sessions": {
+    "s_141452519b4186": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a125c6-fcf7-7ca1-babd-273ce3fd2637",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Jiahao Liu Liu <jiahaoliuliu@gmail.com>"
+    }
+  }
+}
