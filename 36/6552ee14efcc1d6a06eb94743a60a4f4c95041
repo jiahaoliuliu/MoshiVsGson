@@ -1,0 +1,43 @@
+.gitignore
+  s_141452519b4186::t_c330eda4e5beb2 36-42
+README.md
+  s_141452519b4186::t_eb19e832923f48 1-49
+build.gradle.kts
+  s_141452519b4186::t_9f6f7aeebb622c 1-14
+docs/blog-article.md
+  s_141452519b4186::t_b80bf22b12d9c4 1-169
+docs/example-output.txt
+  s_141452519b4186::t_48a033ac50b6ab 1-51
+gradle/wrapper/gradle-wrapper.properties
+  s_141452519b4186::t_37b74c97ae854f 1-8
+gradlew
+  s_141452519b4186::t_a3f8ae28477b67 1-251
+gradlew.bat
+  s_141452519b4186::t_d86cc6a750337b 1-94
+settings.gradle.kts
+  s_141452519b4186::t_5a6096d3d89b66 1
+src/main/kotlin/com/jiahaoliuliu/moshivsgson/Comparison.kt
+  s_141452519b4186::t_564cffff29a225 1-25
+src/main/kotlin/com/jiahaoliuliu/moshivsgson/Main.kt
+  s_141452519b4186::t_3230546ff6f84a 1-34
+src/main/kotlin/com/jiahaoliuliu/moshivsgson/Models.kt
+  s_141452519b4186::t_675633b87db449 1-20
+src/test/kotlin/com/jiahaoliuliu/moshivsgson/ComparisonTest.kt
+  s_141452519b4186::t_14601211407231 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "366552ee14efcc1d6a06eb94743a60a4f4c95041",
+  "prompts": {},
+  "sessions": {
+    "s_141452519b4186": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a125c6-fcf7-7ca1-babd-273ce3fd2637",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Jiahao Liu Liu <jiahao.liu@glovoapp.com>"
+    }
+  }
+}
